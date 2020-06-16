@@ -10,11 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class RecipeBootstrap implements CommandLineRunner {
 
     RecipeRepository recipeRepository;
 
-    public DataLoader(RecipeRepository recipeRepository) {
+    public RecipeBootstrap(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
@@ -25,6 +25,7 @@ public class DataLoader implements CommandLineRunner {
             r1.setDescription("Testing bitch");
             r1.setCookTime(0);
             r1.setPrepTime(10);
+            r1.setDirections("asdsjkdfgkjdldgblfdhgldhgkjfdhgbfjkdgbfjkdghkj");
 
             Ingredient ingredient = new Ingredient();
             ingredient.setDescription("Ingred. Bitch");
@@ -41,6 +42,7 @@ public class DataLoader implements CommandLineRunner {
             r1.setDescription("Guacamole");
             r1.setCookTime(0);
             r1.setPrepTime(10);
+            r1.setDirections("adajfdshsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss adajfdshsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss adajfdshsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
 
             Ingredient ingredient = new Ingredient();
             ingredient.setDescription("Advocado");
