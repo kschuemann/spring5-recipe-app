@@ -6,6 +6,7 @@ import guru.springframework.repositories.RecipeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class RecipeBootstrap implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         {
             Recipe r1 = new Recipe();
