@@ -9,7 +9,7 @@ jobs:
           command: |
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
-  I-Have-Code:
+  Get-Code:
     docker:
       - image: alpine:3.7
     steps:
@@ -21,7 +21,9 @@ jobs:
             echo '^^^That should look familiar^^^'
   Run-With-Node:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/openjdk:11.0.3-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
+      - image: circleci/postgres:12-alpine
+      - image: circleci/maven
     steps:
       - run:
           name: Running In A Container With Node
@@ -34,7 +36,7 @@ workflows:
  Example_Workflow:
    jobs:
      - Hello-World
-     - I-Have-Code:
+     - Get-Code:
          requires:
            - Hello-World
      - Run-With-Node:
@@ -44,4 +46,4 @@ workflows:
          type: approval
          requires:
            - Run-With-Node
-           - I-Have-Code
+           - Get-Code
