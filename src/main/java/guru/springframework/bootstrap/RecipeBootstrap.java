@@ -24,7 +24,7 @@ public class RecipeBootstrap implements CommandLineRunner {
     public void run(String... args) throws Exception {
         {
             Recipe r1 = new Recipe();
-            r1.setDescription("Testing bitch");
+            r1.setDescription("Spicy grilled Chicken");
             r1.setCookTime(0);
             r1.setPrepTime(10);
             r1.setDirections("asdsjkdfgkjdldgblfdhgldhgkjfdhgbfjkdgbfjkdghkj");
