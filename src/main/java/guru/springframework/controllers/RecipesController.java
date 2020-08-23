@@ -1,6 +1,6 @@
 package guru.springframework.controllers;
 
-import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +16,14 @@ public class RecipesController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"", "/", "/recipes/index", "/recipes/index.html"})
+    @RequestMapping({"", "/", "/recipes/recipes", "/recipes/recipes.html"})
     public String listRecipes(Model model) {
         model.addAttribute("recipes", recipeService.getRecipes()); // attribute for list in thymeleaf / html
-        return "recipes/index";
+        return "recipes/recipes"; // where html is
+    }
+
+    @RequestMapping("/new")    public String newRecipe(Model model) {
+        model.addAttribute("recipe", new Recipe());
+        return "recipes/recipeform"; // where the html is
     }
 }
