@@ -1,3 +1,4 @@
+# reused java-mvn example from here: https://circleci.com/docs/2.0/language-java-maven/
 version: 2.1
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
