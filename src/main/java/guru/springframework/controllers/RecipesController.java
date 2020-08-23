@@ -4,6 +4,7 @@ import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/recipes")
@@ -20,6 +21,12 @@ public class RecipesController {
     public String listRecipes(Model model) {
         model.addAttribute("recipes", recipeService.getRecipes()); // attribute for list in thymeleaf / html
         return "recipes/recipes"; // where html is
+    }
+
+    @RequestMapping("/show/{id}")
+    public String showById(@PathVariable String id, Model model){
+        model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
+        return "recipes/show";
     }
 
     @RequestMapping("/new")    public String newRecipe(Model model) {
