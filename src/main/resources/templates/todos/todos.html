@@ -24,10 +24,10 @@
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1 class="panel-title">My Recipes!</h1>
+                    <h1 class="panel-title">My Todos</h1>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(todos)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
                             <tr>
@@ -36,16 +36,16 @@
                             </tr>
                             </thead>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Tasty Goodnees 1</td>
+                                <td th:text="${todo.id}">123</td>
+                                <td th:text="${todo.description}">Tasty Goodnees 1</td>
                             </tr>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">12333</td>
+                                <td th:text="${todo.id}">12333</td>
                                 <td th:text="${recipe.description}">Tasty Goodnees 2</td>
                             </tr>
-                            <tr th:each="recipe : ${recipes}">
-                                <td th:text="${recipe.id}">334</td>
-                                <td th:text="${recipe.description}">Tasty Goodnees 3</td>
+                            <tr th:each="todo : ${todos}">
+                                <td th:text="${todo.id}">334</td>
+                                <td th:text="${todo.description}">Tasty Goodnees 3</td>
                             </tr>
                         </table>
                     </div>

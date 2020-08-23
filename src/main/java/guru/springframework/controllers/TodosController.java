@@ -1,6 +1,6 @@
 package guru.springframework.controllers;
 
-import guru.springframework.services.RecipeService;
+import guru.springframework.services.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TodosController {
 
-    private final RecipeService recipeService;
+    private final TodoService todoService;
 
-    public TodosController(RecipeService recipeService) {
-        this.recipeService = recipeService;
+    public TodosController(TodoService todoService) {
+        this.todoService = todoService;
     }
 
     @RequestMapping({"", "/", "/todos/todos", "/todos/todos.html"})
     public String listRecipes(Model model) {
-        model.addAttribute("recipes", recipeService.getRecipes()); // attribute for list in thymeleaf / html
+        model.addAttribute("todos", todoService.getAllTodos()); // attribute for list in thymeleaf / html
         return "todos/todos";
     }
 }
