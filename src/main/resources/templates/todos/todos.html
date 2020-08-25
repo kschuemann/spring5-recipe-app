@@ -22,7 +22,6 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
-
                 <div class="panel-heading">
                     <h1 class="panel-title">My Todos</h1>
                 </div>
@@ -47,15 +46,17 @@
                                 <td th:text="${todo.id}">334</td>
                                 <td th:text="${todo.description}">Tasty Goodnees 3</td>
                                 <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
-                                <td><a href="#" th:href="@{'/todos/new/'}">Edit</a></td>
+                                <!--<td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>-->
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
+            <div class="col-md-1">
+                <a class="btn btn-default" href="#" style="text-align:right" role="button" th:href="@{'/todos/new/'}">Add</a>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

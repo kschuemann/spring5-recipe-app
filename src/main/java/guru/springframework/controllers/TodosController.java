@@ -9,15 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("/todos")
 @Controller
+@SessionScope
 public class TodosController {
 
     private final TodoService todoService;
+    private List<Todo> currentTodos;
 
     public TodosController(TodoService todoService) {
         this.todoService = todoService;
@@ -25,7 +29,8 @@ public class TodosController {
 
     @RequestMapping({"", "/", "/todos/todos", "/todos/todos.html"})
     public String listRecipes(Model model) {
-        model.addAttribute("todos", todoService.getAllTodos()); // attribute for list in thymeleaf / html
+        currentTodos = todoService.getAllTodos();
+        model.addAttribute("todos", currentTodos); // attribute for list in thymeleaf / html
         return "todos/todos";
     }
 
@@ -51,5 +56,12 @@ public class TodosController {
             return "redirect:/todos/";
         }
     }
+
+    /*@GetMapping("/edit/{id}")
+    public String newRecipe(@PathVariable Long id, Model model) {
+        Todo todo = todoService.findById(id);
+        model.addAttribute("todo", todo);
+        return "todos/todoform"; // where the html is
+    }*/
 
 }
