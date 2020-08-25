@@ -2,16 +2,11 @@ package guru.springframework.services;
 
 import guru.springframework.domain.Todo;
 import guru.springframework.repositories.TodosRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-@Slf4j
 @Service
 public class TodoServiceImpl implements TodoService{
 
@@ -36,5 +31,10 @@ public class TodoServiceImpl implements TodoService{
 
     public void saveTodo(Todo todo) {
         todosRepository.save(todo);
+    }
+
+    @Override
+    public Todo findById(Long id) {
+        return todosRepository.findById(id).orElseThrow(() -> new RuntimeException("Nothing found"));
     }
 }

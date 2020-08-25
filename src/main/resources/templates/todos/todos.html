@@ -46,6 +46,8 @@
                             <tr th:each="todo : ${todos}">
                                 <td th:text="${todo.id}">334</td>
                                 <td th:text="${todo.description}">Tasty Goodnees 3</td>
+                                <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/todos/new/'}">Edit</a></td>
                             </tr>
                         </table>
                     </div>

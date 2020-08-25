@@ -14,4 +14,6 @@ public interface TodoService {
 
     public void saveTodo(Todo todo);
 
+    public Todo findById(Long id);
+
 }

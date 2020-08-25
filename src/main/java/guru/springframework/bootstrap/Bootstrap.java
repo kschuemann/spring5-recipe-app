@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 @Slf4j
 @Component
@@ -19,6 +22,7 @@ public class Bootstrap implements CommandLineRunner {
 
     RecipeRepository recipeRepository;
     TodosRepository todosRepository;
+    Logger log = Logger.getLogger(getClass().getName());
 
     public Bootstrap(RecipeRepository recipeRepository, TodosRepository todosRepository) {
         this.recipeRepository = recipeRepository;
@@ -53,7 +57,7 @@ public class Bootstrap implements CommandLineRunner {
         ingredients2.add(ingr2);
         r2.setIngredients(ingredients2);
         recipeRepository.save(r2);
-        log.debug("Setup Recipes");
+        log.log(Level.INFO, "Setup Recipes");
 
 
         Todo t1 = new Todo(1L, "Tue dies", new Date(System.currentTimeMillis()), null);
@@ -62,7 +66,7 @@ public class Bootstrap implements CommandLineRunner {
         todosRepository.save(t1);
         todosRepository.save(t2);
         todosRepository.save(t3);
-        log.debug("Setup Todos");
+        log.log(Level.INFO,"Setup Todos");
 
     }
 }
