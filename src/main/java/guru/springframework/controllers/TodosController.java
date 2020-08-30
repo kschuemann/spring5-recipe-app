@@ -27,6 +27,11 @@ public class TodosController {
         this.todoService = todoService;
     }
 
+    @PostMapping
+    public String standardPostMethod(Model model){
+        return listRecipes(model);
+    }
+
     @RequestMapping({"", "/", "/todos/todos", "/todos/todos.html"})
     public String listRecipes(Model model) {
         currentTodos = todoService.getAllTodos();
@@ -53,15 +58,25 @@ public class TodosController {
             return "todos/todoform";
         } else {
             this.todoService.saveTodo(todo);
-            return "redirect:/todos/";
+            return "redirect:/todos";
         }
     }
 
-    /*@GetMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String newRecipe(@PathVariable Long id, Model model) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
         return "todos/todoform"; // where the html is
-    }*/
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editRecipe(@Valid Todo editTodo, BindingResult result) {
+        if (result.hasErrors()) {
+            return "todos/todoform";
+        } else {
+            this.todoService.saveTodo(editTodo);
+            return "redirect:/todos";
+        }
+    }
 
 }
