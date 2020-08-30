@@ -32,21 +32,27 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
-                                <!--<td th:text="${todo.id}">123</td>-->
-                                <td th:text="${todo.description}">Tasty Goodnees 1</td>
-                            </tr>
-                            <tr th:remove="all">
-                                <!--<td th:text="${todo.id}">12333</td>-->
-                                <td th:text="${recipe.description}">Tasty Goodnees 2</td>
-                            </tr>
-                            <tr th:each="todo : ${todos}">
-                                <!--<td th:text="${todo.id}">334</td>-->
-                                <td th:text="${todo.description}">Tasty Goodnees 3</td>
+                                <td th:text="${todo.description}">Mach dies</td>
                                 <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
                                 <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
+                                <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td th:text="${recipe.description}">Mach das</td>
+                                <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
+                                <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>
+                            </tr>
+                            <tr th:each="todo : ${todos}">
+                                <td th:text="${todo.description}">Do it now</td>
+                                <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
+                                <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>
                             </tr>
                         </table>
                     </div>
