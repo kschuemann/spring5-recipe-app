@@ -17,7 +17,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-
+<!--/*@thymesVar id="todo" type="guru.springframework.domain.Todo"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -32,24 +32,28 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
+                                <th>Created</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
                                 <td th:text="${todo.description}">Mach dies</td>
+                                <td th:text="${todo.createdDate}">2020-08-30</td>
                                 <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
                                 <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
                                 <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>
                             </tr>
                             <tr th:remove="all">
                                 <td th:text="${recipe.description}">Mach das</td>
+                                <td th:text="${todo.createdDate}">2020-08-30</td>
                                 <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
                                 <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
                                 <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>
                             </tr>
                             <tr th:each="todo : ${todos}">
                                 <td th:text="${todo.description}">Do it now</td>
+                                <td th:text="${todo.createdDate}">2020-08-30</td>
                                 <td><a href="#" th:href="@{'/todos/show/' + ${todo.id}}">View</a></td>
                                 <td><a href="#" th:href="@{'/todos/edit/' + ${todo.id}}">Edit</a></td>
                                 <td><a href="#" th:action="@{'/todos/remove/' + ${todo.id}}" th:method="delete">Delete</a></td>

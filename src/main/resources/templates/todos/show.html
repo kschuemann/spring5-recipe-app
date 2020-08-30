@@ -18,33 +18,29 @@
 <body>
 <!--/*@thymesVar id="todo" type="guru.springframework.domain.Todo"*/-->
 <div class="container-fluid" style="margin-top: 20px">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="pannel-group">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title" th:text="${todo.description}">Todo Description Here!</h1>
+    <form th:object="${todo}" method="post">
+        <div class="pannel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Edit todo Information</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label>Description</label>
+                            <p type="text" th:text="*{description}">Eine tolle Beschreibung</p>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h5>Prep Time:</h5>
-                            </div>
-                            <div class="col-md-3">
-                                <p th:text="${todo.description}">Something todo</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h5>Created:</h5>
-                            </div>
-                            <div class="col-md-3">
-                                <p th:text="${todo.createdDate}">today maybe?</p>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label>Created Date</label>
+                            <p type="text" th:text="*{createdDate}">2020-08-30</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 </body>
 </html>

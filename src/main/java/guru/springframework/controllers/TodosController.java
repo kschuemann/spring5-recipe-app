@@ -26,11 +26,11 @@ public class TodosController {
 
     @PostMapping
     public String standardPostMethod(Model model){
-        return listRecipes(model);
+        return listTodos(model);
     }
 
     @RequestMapping({"", "/", "/todos/todos", "/todos/todos.html"})
-    public String listRecipes(Model model) {
+    public String listTodos(Model model) {
         currentTodos = todoService.getAllTodos();
         model.addAttribute("todos", currentTodos); // attribute for list in thymeleaf / html
         return "todos/todos";
@@ -43,7 +43,7 @@ public class TodosController {
     }
 
     @GetMapping("/new")
-    public String newRecipe(Model model) {
+    public String newTodo(Model model) {
         Date date = new Date(System.currentTimeMillis());
         model.addAttribute("todo", new Todo("", date, date));
         return "todos/todoform"; // where the html is
@@ -60,14 +60,14 @@ public class TodosController {
     }
 
     @GetMapping("/edit/{id}")
-    public String newRecipe(@PathVariable Long id, Model model) {
+    public String newTodo(@PathVariable Long id, Model model) {
         Todo todo = todoService.findById(id);
         model.addAttribute("todo", todo);
         return "todos/todoform"; // where the html is
     }
 
     @PostMapping("/edit/{id}")
-    public String editRecipe(@Valid Todo editTodo, BindingResult result) {
+    public String editTodo(@Valid Todo editTodo, BindingResult result) {
         if (result.hasErrors()) {
             return "todos/todoform";
         } else {

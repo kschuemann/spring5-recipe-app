@@ -30,8 +30,14 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label>todo Description:</label>
+                                    <label>Description</label>
                                     <input type="text" class="form-control" th:field="*{description}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Created</label>
+                                    <p type="text" class="form-control" th:datetime="*{createdDate}">2020-08-30</p>
                                 </div>
                             </div>
                         </div>
