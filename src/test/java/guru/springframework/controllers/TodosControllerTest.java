@@ -55,6 +55,12 @@ class TodosControllerTest {
     }
 
     @Test
+    void processCreationForm() {
+        Todo td = new Todo();
+        td.setId(2L);
+    }
+
+    @Test
     void testNewTodo() {
     }
 }

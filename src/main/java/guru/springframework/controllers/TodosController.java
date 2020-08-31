@@ -75,4 +75,11 @@ public class TodosController {
             return "redirect:/todos";
         }
     }
+
+    @GetMapping
+    @RequestMapping("/delete/{id}")
+    public String deletePostById(@PathVariable String id){
+        todoService.deleteTodo(Long.valueOf(id));
+        return "redirect:/todos";
+    }
 }

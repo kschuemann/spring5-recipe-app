@@ -37,4 +37,9 @@ public class TodoServiceImpl implements TodoService{
     public Todo findById(Long id) {
         return todosRepository.findById(id).orElseThrow(() -> new RuntimeException("Nothing found"));
     }
+
+    @Override
+    public void deleteTodo(Long id) {
+        todosRepository.deleteById(id);
+    }
 }
